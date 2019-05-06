@@ -1,0 +1,18 @@
+---
+version: "2"
+services:
+   stage:
+     build: .
+     volumes:
+       - webapp:/home/git/boxfuse-sample-java-war-hello/target/
+   app:
+     build:
+       context: .
+       dockerfile: dockerfile_tomcat
+     volumes:
+       - webapp:/usr/share/tomcat8/webapps/
+     ports:
+       - 8181:8080
+
+volumes:
+   webapp:
